@@ -12,10 +12,7 @@ const Moviez = () => {
             const url="https://www.omdbapi.com/?t="+ name+"&apikey=a6ee5ff"
             axios.get(url)
             .then((response)=>{
-                console.log(response.data);
-                // movie=response.data;
                 setMovie(response.data);
-                console.log(movie);
             })
         }
         
@@ -28,7 +25,7 @@ const Moviez = () => {
                         <button className="btn btn-primary m-3" onClick={fetchMovie}>Search</button>
                     </div>
                 </div>
-                <div className="card m-2 m-5" style={{width: "18rem"}}>
+                {movie.length === 0 ? "":<div className="card m-2 m-5" style={{width: "18rem"}}>
                         <img className="card-img-top" src={movie.Poster} alt=" "></img>
                         <div className="card-body">
                         <p className="card-text">
@@ -39,8 +36,7 @@ const Moviez = () => {
                         <b>Director: </b>{movie.Director}<br></br>
                         <b>Plot: </b>{movie.Plot}
                         </p>
-                </div>
-                </div>
+                </div></div>}
             </React.Fragment>
             
             
